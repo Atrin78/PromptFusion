@@ -45,7 +45,7 @@ from timm.scheduler import create_scheduler
 from timm.optim import create_optimizer
 
 import models
-import utils
+from federated import utils
 
 
 if __name__ == '__main__':
