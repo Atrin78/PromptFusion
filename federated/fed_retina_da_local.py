@@ -40,6 +40,13 @@ from digit_net import ImageClassifier
 from prepare_data import prepare_office
 from feddc_retina_nonntk import prepare_data
 
+from timm.models import create_model
+from timm.scheduler import create_scheduler
+from timm.optim import create_optimizer
+
+import models
+import utils
+
 
 if __name__ == '__main__':
 
@@ -181,7 +188,13 @@ if __name__ == '__main__':
     # server_model = ImageClassifier(args.model_arch,31, 512).to(device)
     # server_model = DigitModel2(trainset_num_classes).to(device)
     # server_model = DigitModel(trainset_num_classes).to(device)
-    server_model = AlexNet(trainset_num_classes).to(device)
+    
+    #server_model = AlexNet(trainset_num_classes).to(device)
+    server_model = create_model(
+        'vit_tiny_patch16_224',
+        num_classes=trainset_num_classes,
+        drop_block_rate=None    )
+    
     print(server_model)
     loss_fun = nn.CrossEntropyLoss()
 
