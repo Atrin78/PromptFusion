@@ -190,10 +190,11 @@ if __name__ == '__main__':
     # server_model = DigitModel(trainset_num_classes).to(device)
     
     #server_model = AlexNet(trainset_num_classes).to(device)
-    server_model = create_model(
-        'vit_tiny_patch16_224',
-        num_classes=trainset_num_classes,
-        drop_block_rate=None    )
+    server_model  = ViTWithPrompts(trainset_num_classes).to(device)
+    #server_model = create_model(
+    #    'vit_tiny_patch16_224',
+    #    num_classes=trainset_num_classes,
+    #    drop_block_rate=None    )
     
     print(server_model)
     loss_fun = nn.CrossEntropyLoss()
