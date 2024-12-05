@@ -204,7 +204,7 @@ class ViTWithPrompts(nn.Module):
 
         # Pass through frozen encoder
         transformer_output = self.backbone_model.vit.encoder(combined_inputs)
-        cls_output = transformer_output[:, 0, :]   # CLS token output
+        cls_output = transformer_output[0][:, 0, :]   # CLS token output
 
         # Bottleneck and head
         bottleneck_output = self.bottleneck(cls_output)
