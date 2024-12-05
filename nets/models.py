@@ -170,7 +170,7 @@ class ViTWithPrompts(nn.Module):
     """
     def __init__(self, num_classes=10, prompt_length=10, pretrained_model_name='google/vit-base-patch16-224'):
         super(ViTWithPrompts, self).__init__()
-        self.backbone_model = ViTForImageClassification.from_pretrained(pretrained_model_name, num_labels=num_classes)
+        self.backbone_model = ViTForImageClassification.from_pretrained(pretrained_model_name, num_labels=num_classes, ignore_mismatched_sizes=True)
 
         # Freeze the rest of the ViT model
         for param in self.backbone_model.parameters():
