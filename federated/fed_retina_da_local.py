@@ -10,7 +10,7 @@ import torch
 from torch import nn, optim
 import time
 import copy
-from nets.models import DigitModel, AlexNet
+from nets.models import DigitModel, AlexNet, ViTWithPrompts
 import argparse
 import numpy as np
 import torchvision
