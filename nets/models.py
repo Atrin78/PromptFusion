@@ -195,7 +195,7 @@ class ViTWithPrompts(nn.Module):
 
     def forward(self, x):
         # Patch embedding and positional encoding
-        embeddings = self.backbone_model.vit.embeddings(x).last_hidden_state  # Shape: (batch_size, seq_len, hidden_size)
+        embeddings = self.backbone_model.vit.embeddings(x)  # Shape: (batch_size, seq_len, hidden_size)
 
         # Add prompts
         batch_size = embeddings.size(0)
@@ -204,7 +204,7 @@ class ViTWithPrompts(nn.Module):
 
         # Pass through frozen encoder
         transformer_output = self.backbone_model.vit.encoder(combined_inputs)
-        cls_output = transformer_output.last_hidden_state[:, 0, :]  # CLS token output
+        cls_output = transformer_output[:, 0, :]   # CLS token output
 
         # Bottleneck and head
         bottleneck_output = self.bottleneck(cls_output)
