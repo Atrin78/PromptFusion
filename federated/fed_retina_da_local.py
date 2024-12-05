@@ -40,13 +40,6 @@ from digit_net import ImageClassifier
 from prepare_data import prepare_office
 from feddc_retina_nonntk import prepare_data
 
-from timm.models import create_model
-from timm.scheduler import create_scheduler
-from timm.optim import create_optimizer
-
-import models
-from federated import utils
-
 
 if __name__ == '__main__':
 
